@@ -3,7 +3,7 @@ sequenceDiagram
     participant Staff as Hotel Staff
     participant BE as NestJS Backend
     participant DB as PostgreSQL
-    participant Q as BullMQ
+    participant Q as Socket.IO
 
     Staff->>BE: Record stock in (goods receipt)
     BE->>DB: Update stock levels + batch/expiry
@@ -14,7 +14,7 @@ sequenceDiagram
 
     alt Below threshold
         BE->>Q: Enqueue low stock alert
-        Q->>Staff: Send email + dashboard alert
+        Q->>Staff: Send notification + dashboard alert
     end
 
     Staff->>BE: Create purchase order

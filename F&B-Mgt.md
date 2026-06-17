@@ -1,7 +1,7 @@
 ```mermaid
 sequenceDiagram
     participant Traveler as Traveler (in room)
-    participant Kitchen as Kitchen Staff
+    participant Kitchen as F&B Manager
     participant BE as NestJS Backend
     participant DB as PostgreSQL
     participant WS as Socket.IO
@@ -14,5 +14,5 @@ sequenceDiagram
     Kitchen->>BE: Update order status (Preparing → Ready → Delivered)
     BE->>DB: Update order status
     BE->>WS: Emit food:status-changed
-    WS->>Traveler: Real-time order tracking
+    WS->>Traveler: Order status tracking
 ```
